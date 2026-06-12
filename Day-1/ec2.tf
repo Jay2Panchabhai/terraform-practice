@@ -2,7 +2,7 @@ resource "aws_instance" "ec2_block" {
     ami = "ami-0db56f446d44f2f09"
     instance_type = "t3.micro"
     key_name = "demo.key"
-    vpc_security_group_ids = ["sg-0f034c503a772275a"] 
+    vpc_security_group_ids = ["sg-02d54887c651c5f1b"] 
     user_data = file("/root/terraform-practice/Day-1/user_data.sh")
 
   root_block_device {
