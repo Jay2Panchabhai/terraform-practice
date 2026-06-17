@@ -2,35 +2,35 @@ variable "vpc_cidr" {
     default = "10.0.0.0/16"
 }
 
-variable "public_subnet_cidr_2a" {
+variable "public_subnet_cidr_1a" {
     default = "10.0.0.0/20"
 }
 
-variable "public_subnet_cidr_2b" {
+variable "public_subnet_cidr_1b" {
     default = "10.0.16.0/20"
 }
 
-variable "public_az_2a" {
-    default = "ap-south-2a"
+variable "public_az_1a" {
+    default = "ap-south-1a"
 }
 
-variable "public_az_2b" {
-    default = "ap-south-2b"
+variable "public_az_1b" {
+    default = "ap-south-1b"
 }
 
-variable "private_subnet_cidr_2a" {
+variable "private_subnet_cidr_1a" {
     default = "10.0.32.0/20"
 }
 
-variable "private_subnet_cidr_2b" {
+variable "private_subnet_cidr_1b" {
     default = "10.0.48.0/20"
 }
 
-variable "private_az_2a" {
+variable "private_az_1a" {
     default = "us-east-2a"
 }
 
-variable "private_az_2b" {
+variable "private_az_1b" {
     default = "ap-south-2b"
 }
 

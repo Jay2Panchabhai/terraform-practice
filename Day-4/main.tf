@@ -5,39 +5,39 @@ resource "aws_vpc" "my_vpc" {
     }
 }
 
-resource "aws_subnet" "public_subnet_2a" {
+resource "aws_subnet" "public_subnet_1a" {
     vpc_id = aws_vpc.my_vpc.id 
-    cidr_block = var.public_subnet_cidr_2a
-    availability_zone = var.public_az_2a
+    cidr_block = var.public_subnet_cidr_1a
+    availability_zone = var.public_az_1a
     map_public_ip_on_launch = true
     tags = {
         Name = "public_subnet"
     }
 }
 
-resource "aws_subnet" "public_subnet_2b" {
+resource "aws_subnet" "public_subnet_1b" {
     vpc_id = aws_vpc.my_vpc.id 
-    cidr_block = var.public_subnet_cidr_2b
-    availability_zone = var.public_az_2b
+    cidr_block = var.public_subnet_cidr_1b
+    availability_zone = var.public_az_1b
     map_public_ip_on_launch = true
     tags = {
         Name = "public_subnet"
     }
 }
 
-resource "aws_subnet" "private_subnet_2a" {
+resource "aws_subnet" "private_subnet_1a" {
     vpc_id = aws_vpc.my_vpc.id 
-    cidr_block = var.private_subnet_cidr_2a
-    availability_zone = var.private_az_2a
+    cidr_block = var.private_subnet_cidr_1a
+    availability_zone = var.private_az_1a
     tags = {
         Name = "private_subnet"
     }
 }
 
-resource "aws_subnet" "private_subnet_2b" {
+resource "aws_subnet" "private_subnet_1b" {
     vpc_id = aws_vpc.my_vpc.id 
-    cidr_block = var.private_subnet_cidr_2b
-    availability_zone = var.private_az_2b
+    cidr_block = var.private_subnet_cidr_1b
+    availability_zone = var.private_az_1b
     tags = {
         Name = "private_subnet"
     }
@@ -58,7 +58,7 @@ resource "aws_eip" "nat_eip" {
 }
 
 resource "aws_nat_gateway" "nat_gateway" {
-    subnet_id = aws_subnet.public_subnet_2a.id 
+    subnet_id = aws_subnet.public_subnet_1a.id 
     allocation_id = aws_eip.nat_eip.id 
     tags = {
         Name = "nat_gateway"
@@ -78,13 +78,13 @@ resource "aws_route_table" "public_rt" {
     }
 }
 
-resource "aws_route_table_association" "public_rt_assoc_2a" {
-    subnet_id = aws_subnet.public_subnet_2a.id 
+resource "aws_route_table_association" "public_rt_assoc_1a" {
+    subnet_id = aws_subnet.public_subnet_1a.id 
     route_table_id = aws_route_table.public_rt.id 
 }
 
-resource "aws_route_table_association" "public_rt_assoc_2b" {
-    subnet_id = aws_subnet.public_subnet_2b.id 
+resource "aws_route_table_association" "public_rt_assoc_1b" {
+    subnet_id = aws_subnet.public_subnet_1b.id 
     route_table_id = aws_route_table.public_rt.id 
 }
 
@@ -101,13 +101,13 @@ resource "aws_route_table" "private_rt" {
     }
 }
 
-resource "aws_route_table_association" "private_rt_assoc_2a" {
-    subnet_id = aws_subnet.private_subnet_2a.id 
+resource "aws_route_table_association" "private_rt_assoc_1a" {
+    subnet_id = aws_subnet.private_subnet_1a.id 
     route_table_id = aws_route_table.private_rt.id 
 }
 
-resource "aws_route_table_association" "private_rt_assoc_2b" {
-    subnet_id = aws_subnet.private_subnet_2b.id 
+resource "aws_route_table_association" "private_rt_assoc_1b" {
+    subnet_id = aws_subnet.private_subnet_1b.id 
     route_table_id = aws_route_table.private_rt.id 
 }
 
@@ -157,7 +157,7 @@ resource "aws_lb" "lb" {
     internal = false
     load_balancer_type = "application"
     security_groups = [aws_security_group.sg.id]
-    subnets = [aws_subnet.public_subnet_2a.id, aws_subnet.public_subnet_2b.id]
+    subnets = [aws_subnet.public_subnet_1a.id, aws_subnet.public_subnet_1b.id]
     tags = {
         Name = "ALB"
     }
@@ -187,7 +187,7 @@ resource "aws_autoscaling_group" "my_asg" {
     desired_capacity = var.desired
     min_size = var.min_size
     max_size = var.max_size
-    vpc_zone_identifier = [aws_subnet.private_subnet_2a.id, aws_subnet.private_subnet_2b.id]
+    vpc_zone_identifier = [aws_subnet.private_subnet_1a.id, aws_subnet.private_subnet_1b.id]
     target_group_arns = [aws_lb_target_group.tg.arn]
     launch_template {
         id      = aws_launch_template.lt.id
