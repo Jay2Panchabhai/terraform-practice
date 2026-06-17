@@ -43,7 +43,7 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-    default = "web"
+    default = "demo.key"
 }
 
 variable "desired" {
