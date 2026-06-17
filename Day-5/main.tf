@@ -14,15 +14,19 @@ module "vpc" {
   private_az = "ap-south-1c"
 }
 
-module "ec2" {
-  source = "./module/Ec-2"
+module "asg" {
+  source = "./module/asg"
 
   ami           = "ami-0e38835daf6b8a2b9"
   instance_type = "t3.micro"
   key_name      = "demo.key"
 
-  subnet_id = module.vpc.public_subnet_1_id
-  sg_id     = module.vpc.sg_id
+  sg_id = module.vpc.sg_id
+
+  target_group_arn = module.alb.target_group_arn
+
+  public_subnet_1_id = module.vpc.public_subnet_1_id
+  public_subnet_2_id = module.vpc.public_subnet_2_id
 }
 
 module "alb" {
