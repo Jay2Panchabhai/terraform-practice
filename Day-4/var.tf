@@ -11,11 +11,11 @@ variable "public_subnet_cidr_2b" {
 }
 
 variable "public_az_2a" {
-    default = "us-east-2a"
+    default = "ap-south-2a"
 }
 
 variable "public_az_2b" {
-    default = "us-east-2b"
+    default = "ap-south-2b"
 }
 
 variable "private_subnet_cidr_2a" {
@@ -31,7 +31,7 @@ variable "private_az_2a" {
 }
 
 variable "private_az_2b" {
-    default = "us-east-2b"
+    default = "ap-south-2b"
 }
 
 variable "ami" {
