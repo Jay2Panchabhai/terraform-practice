@@ -15,10 +15,12 @@ module "vpc" {
 }
 
 module "ec2" {
-    source = "./module/Ec-2"
-    ami = "ami-0e38835daf6b8a2b9"
-    instance_type = "t3.micro"
-    key_name = "demo.key"
-    subnet_id = module.vpc.public_subnet_id
-    sg_id = module.vpc.sg_id
+  source = "./module/ec2"
+
+  ami           = "ami-0e38835daf6b8a2b9"
+  instance_type = "t3.micro"
+  key_name      = "demo.key"
+
+  subnet_id = module.vpc.public_subnet_1_id
+  sg_id     = module.vpc.sg_id
 }
