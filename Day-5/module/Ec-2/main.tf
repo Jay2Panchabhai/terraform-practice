@@ -4,7 +4,7 @@ resource "aws_instance" "public_instance" {
     key_name = var.key_name
     subnet_id =  var.subnet_id 
     vpc_security_group_ids = [var.sg_id]
-    user_data = file("/root/terraform-practice/Day-5/module/ec2/user_data.sh")
+    user_data = file("${path.module}/user_data.sh")
     tags = {
         Name = "public-instance"
     }
