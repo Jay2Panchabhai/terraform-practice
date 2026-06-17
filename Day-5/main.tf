@@ -24,3 +24,14 @@ module "ec2" {
   subnet_id = module.vpc.public_subnet_1_id
   sg_id     = module.vpc.sg_id
 }
+
+module "alb" {
+  source = "./module/alb"
+
+  vpc_id = module.vpc.vpc_id
+
+  sg_id = module.vpc.sg_id
+
+  public_subnet_1_id = module.vpc.public_subnet_1_id
+  public_subnet_2_id = module.vpc.public_subnet_2_id
+}
