@@ -27,7 +27,7 @@ variable "private_subnet_cidr_1b" {
 }
 
 variable "private_az_1a" {
-    default = "us-east-1a"
+    default = "ap-south-1a"
 }
 
 variable "private_az_1b" {
