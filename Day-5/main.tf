@@ -19,7 +19,7 @@ module "asg" {
 
   ami           = "ami-0e38835daf6b8a2b9"
   instance_type = "t3.micro"
-  key_name      = "demo.key"
+  key_name      = "test"
 
   sg_id = module.vpc.sg_id
 
