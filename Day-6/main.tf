@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "s3" {
-}
+# resource "aws_s3_bucket" "s3" {
+# }
 
 #####TERRAFORM LOOPS#######
 resource "aws_instance" "ec_2" {
